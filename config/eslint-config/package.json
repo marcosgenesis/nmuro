@@ -15,7 +15,7 @@
   "prettier": "@hellogio/prettier",
   "eslintConfig": {
     "extends": [
-      "library.js"
+      "./library.js"
     ]
   }
 }
