@@ -11,5 +11,11 @@
     "@rocketseat/eslint-config": "^2.2.2",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "@hellogio/prettier": "workspace:*"
+  },
+  "prettier": "@hellogio/prettier",
+  "eslintConfig": {
+    "extends": [
+      "library.js"
+    ]
   }
 }
