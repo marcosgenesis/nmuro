@@ -1,16 +1,17 @@
 'use client'
 
-import {AwardIcon, BrickWall, NewspaperIcon} from 'lucide-react'
+import { AwardIcon, BrickWall, NewspaperIcon } from 'lucide-react'
 import React from 'react'
 
-import {Tab, useNavbar} from '@/stores/use-navbar'
+import { Tab, useNavbar } from '@/stores/use-navbar'
 
-import {Avatar, AvatarFallback, AvatarImage} from '../ui/avatar'
-import {Badge} from '../ui/badge'
-import {Tabs, TabsList, TabsTrigger} from '../ui/tabs'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Badge } from '../ui/badge'
+import { Button } from '../ui/button'
+import { Tabs, TabsList, TabsTrigger } from '../ui/tabs'
 
 export const Navbar: React.FC = () => {
-  const {tab, setTab} = useNavbar((state) => state)
+  const { tab, setTab } = useNavbar((state) => state)
   return (
     <div className="relative">
       <div className="mb-4 flex h-40 items-center justify-between bg-zinc-900 p-4">
@@ -30,7 +31,8 @@ export const Navbar: React.FC = () => {
           </p>
         </div>
       </div>
-      <div className="absolute -bottom-5 flex w-full items-center justify-center">
+      <div className="absolute -bottom-5 flex w-full items-center justify-center gap-2 px-4">
+        <Button className="w-full">Elogiar</Button>
         <Tabs value={tab} onValueChange={(v: string) => setTab(v as Tab)}>
           <TabsList>
             <TabsTrigger value="home">

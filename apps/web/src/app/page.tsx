@@ -1,14 +1,14 @@
 'use client'
-import {faker} from '@faker-js/faker'
+import { faker } from '@faker-js/faker'
 
-import {Avatar, AvatarFallback, AvatarImage} from '@/components/ui/avatar'
-import {Badge} from '@/components/ui/badge'
-import {Card} from '@/components/ui/card'
-import {Tabs, TabsContent} from '@/components/ui/tabs'
-import {useNavbar} from '@/stores/use-navbar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
+import { Card } from '@/components/ui/card'
+import { Tabs, TabsContent } from '@/components/ui/tabs'
+import { useNavbar } from '@/stores/use-navbar'
 
 export default function Home() {
-  const {tab} = useNavbar((state) => state)
+  const { tab } = useNavbar((state) => state)
   return (
     <Tabs value={tab}>
       <TabsContent value={'home'}>
