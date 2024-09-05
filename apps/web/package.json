@@ -9,17 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.5.2",
     "ky": "^1.7.2",
     "lucide-react": "^0.438.0",
+    "mini-svg-data-uri": "^1.4.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.0.0",
     "@hellogio/eslint-config": "workspace:*",
     "@hellogio/prettier": "workspace:*",
     "@hellogio/tsconfig": "workspace:*",
