@@ -8,7 +8,7 @@ import {Navbar} from '@/components/home/navbar'
 const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
-  title: 'Hellogio',
+  title: 'Nmuro',
 }
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

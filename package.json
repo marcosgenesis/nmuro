@@ -1,5 +1,5 @@
 {
-  "name": "hellogio",
+  "name": "nmuro",
   "private": true,
   "scripts": {
     "build": "turbo build",

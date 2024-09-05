@@ -66,13 +66,13 @@ importers:
       '@faker-js/faker':
         specifier: ^9.0.0
         version: 9.0.0
-      '@hellogio/eslint-config':
+      '@nmuro/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@hellogio/prettier':
+      '@nmuro/prettier':
         specifier: workspace:*
         version: link:../../config/prettier
-      '@hellogio/tsconfig':
+      '@nmuro/tsconfig':
         specifier: workspace:*
         version: link:../../config/typescript-config
       '@types/node':
@@ -99,7 +99,7 @@ importers:
 
   config/eslint-config:
     devDependencies:
-      '@hellogio/prettier':
+      '@nmuro/prettier':
         specifier: workspace:*
         version: link:../prettier
       '@rocketseat/eslint-config':
