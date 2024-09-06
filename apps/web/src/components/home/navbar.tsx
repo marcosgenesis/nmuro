@@ -5,9 +5,9 @@ import React from 'react'
 
 import { Tab, useNavbar } from '@/stores/use-navbar'
 
+import { NewPraise } from '../new-praise'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Badge } from '../ui/badge'
-import { Button } from '../ui/button'
 import { Tabs, TabsList, TabsTrigger } from '../ui/tabs'
 
 export const Navbar: React.FC = () => {
@@ -32,7 +32,7 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
       <div className="absolute -bottom-5 flex w-full items-center justify-center gap-2 px-4">
-        <Button className="w-full">Elogiar</Button>
+        <NewPraise />
         <Tabs value={tab} onValueChange={(v: string) => setTab(v as Tab)}>
           <TabsList>
             <TabsTrigger value="home">
