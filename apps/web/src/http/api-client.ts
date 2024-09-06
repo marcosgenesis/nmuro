@@ -1,5 +1,5 @@
 import ky from 'ky'
 
-export const apiClient = ky.create({
+export const api = ky.create({
   prefixUrl: 'http://localhost:3000',
 })

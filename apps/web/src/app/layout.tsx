@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 
 import { Navbar } from '@/components/home/navbar'
 import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
+import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <div vaul-drawer-wrapper="" className="bg-background">
             <Navbar />
             <main>{children}</main>
+            <Toaster />
           </div>
         </ReactQueryClientProvider>
       </body>
