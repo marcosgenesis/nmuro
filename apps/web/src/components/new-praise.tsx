@@ -98,7 +98,7 @@ export const NewPraise: React.FC = () => {
                           >
                             {field.value
                               ? members.find((language) => {
-                                  return language.id.toString() === field.value
+                                  return language.id === field.value
                                 })?.name
                               : 'Selecione uma pessoa'}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -118,14 +118,14 @@ export const NewPraise: React.FC = () => {
                                   onSelect={() => {
                                     newPraiseForm.setValue(
                                       'person',
-                                      language.id.toString(),
+                                      language.id,
                                     )
                                   }}
                                 >
                                   <Check
                                     className={cn(
                                       'mr-2 h-4 w-4',
-                                      language.id.toString() === field.value
+                                      language.id === field.value
                                         ? 'opacity-100'
                                         : 'opacity-0',
                                     )}
