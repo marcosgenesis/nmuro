@@ -1,3 +1,4 @@
+import { useMutation } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
 import { api } from '../api-client'
@@ -7,21 +8,29 @@ interface NewPraiseRequest {
   content: string
 }
 
-export const newPraise = async ({ person, content }: NewPraiseRequest) => {
-  try {
-    const response = await api
-      .post('/praise', {
-        json: {
-          person,
-          content,
-        },
+export const useNewPraise = () => {
+  return useMutation({
+    mutationKey: ['new-praise'],
+    mutationFn: async ({ person, content }: NewPraiseRequest) => {
+      const response = await api
+        .post('/praise', {
+          json: {
+            person,
+            content,
+          },
+        })
+        .json()
+      return response
+    },
+    onSuccess: () => {
+      toast.success('Elogio enviado com sucesso', {
+        description: 'O elogio foi enviado com sucesso',
       })
-      .json()
-    return response
-  } catch (error) {
-    toast.error('Erro ao enviar elogio', {
-      description: 'Não foi possível enviar o elogio',
-    })
-    console.error(error)
-  }
+    },
+    onError: () => {
+      toast.error('Erro ao enviar elogio', {
+        description: 'Não foi possível enviar o elogio',
+      })
+    },
+  })
 }

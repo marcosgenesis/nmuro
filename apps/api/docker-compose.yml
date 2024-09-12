@@ -1,0 +1,11 @@
+name: mnuro-api
+
+services:
+  pg:
+    image: bitnami/postgresql:latest
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: mnuro
+    ports:
+      - 5432:5432

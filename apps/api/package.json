@@ -1,0 +1,35 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file=.env src/http/server.ts",
+    "seed": "tsx --env-file=.env src/db/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nmuro/eslint-config": "workspace:*",
+    "@nmuro/prettier": "workspace:*",
+    "@nmuro/tsconfig": "workspace:*",
+    "@types/node": "^20.16.4",
+    "drizzle-kit": "^0.24.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
+    "drizzle-orm": "^0.33.0",
+    "fastify": "^4.28.1",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8"
+  },
+  "prettier": "@nmuro/prettier",
+  "eslintConfig": {
+    "extends": [
+      "@nmuro/eslint-config/node"
+    ]
+  }
+}

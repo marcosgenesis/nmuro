@@ -1,10 +1,16 @@
 import { faker } from '@faker-js/faker'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { Check, ChevronsUpDown } from 'lucide-react'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import {
+  newPraise,
+  newPraiseMutation,
+  useNewPraise,
+} from '@/http/praise/new-praise'
 import { cn } from '@/lib/utils'
 
 import { Button } from './ui/button'
@@ -54,6 +60,7 @@ const members = Array.from({ length: 100 }).map(() => ({
 }))
 
 export const NewPraise: React.FC = () => {
+  const newPraiseMutation = useNewPraise()
   const newPraiseForm = useForm<z.infer<typeof newPraiseSchema>>({
     resolver: zodResolver(newPraiseSchema),
   })
@@ -61,7 +68,8 @@ export const NewPraise: React.FC = () => {
   const handleNewPraise: SubmitHandler<
     z.infer<typeof newPraiseSchema>
   > = async ({ content, person }) => {
-    console.log(content, person)
+    const response = await newPraiseMutation.mutateAsync({ person, content })
+    console.log(response)
   }
 
   return (
