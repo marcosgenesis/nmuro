@@ -3,7 +3,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
-import { Navbar } from '@/components/home/navbar'
 import { ReactQueryClientProvider } from '@/components/react-query-client-provider'
 import { Toaster } from '@/components/ui/sonner'
 
@@ -23,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ReactQueryClientProvider>
           <div vaul-drawer-wrapper="" className="bg-background">
-            <Navbar />
+            {/* <Navbar /> */}
             <main>{children}</main>
             <Toaster />
           </div>

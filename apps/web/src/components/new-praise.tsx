@@ -1,17 +1,13 @@
 import { faker } from '@faker-js/faker'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation } from '@tanstack/react-query'
-import { Check, ChevronsUpDown } from 'lucide-react'
+import { Check, ChevronsUpDown, Cuboid } from 'lucide-react'
 import React from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import {
-  newPraise,
-  newPraiseMutation,
-  useNewPraise,
-} from '@/http/praise/new-praise'
+import { useNewPraise } from '@/http/praise/new-praise'
 import { cn } from '@/lib/utils'
+import { usePostsStore } from '@/stores/use-posts'
 
 import { Button } from './ui/button'
 import {
@@ -43,9 +39,15 @@ import {
   ResponsiveModalTrigger,
 } from './ui/responsive-drawer'
 import RichTextEditor from './ui/text-editor'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip'
 
 const newPraiseSchema = z.object({
-  person: z.number({
+  person: z.string({
     required_error: 'Escolha uma pessoa',
   }),
   content: z.string({
@@ -60,7 +62,8 @@ const members = Array.from({ length: 100 }).map(() => ({
 }))
 
 export const NewPraise: React.FC = () => {
-  const newPraiseMutation = useNewPraise()
+  // const newPraiseMutation = useNewPraise()
+  const { setPosts, posts } = usePostsStore((state) => state)
   const newPraiseForm = useForm<z.infer<typeof newPraiseSchema>>({
     resolver: zodResolver(newPraiseSchema),
   })
@@ -68,14 +71,36 @@ export const NewPraise: React.FC = () => {
   const handleNewPraise: SubmitHandler<
     z.infer<typeof newPraiseSchema>
   > = async ({ content, person }) => {
-    const response = await newPraiseMutation.mutateAsync({ person, content })
-    console.log(response)
+    setPosts([
+      ...posts,
+      {
+        id: Math.random().toString(),
+        title: 'Praise',
+        content,
+        author: person,
+        coordinates: {
+          x: 0,
+          y: 0,
+        },
+      },
+    ])
   }
 
   return (
     <ResponsiveModal>
-      <ResponsiveModalTrigger asChild>
-        <Button className="w-full">Elogiar</Button>
+      <ResponsiveModalTrigger>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button size={'icon'} className="h-12 w-12">
+                <Cuboid />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="right">
+              <p>Novo Elogio</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </ResponsiveModalTrigger>
       <ResponsiveModalContent>
         <ResponsiveModalHeader>
@@ -106,7 +131,7 @@ export const NewPraise: React.FC = () => {
                           >
                             {field.value
                               ? members.find((language) => {
-                                  return language.id === field.value
+                                  return language.name === field.value
                                 })?.name
                               : 'Selecione uma pessoa'}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -126,14 +151,14 @@ export const NewPraise: React.FC = () => {
                                   onSelect={() => {
                                     newPraiseForm.setValue(
                                       'person',
-                                      language.id,
+                                      language.name,
                                     )
                                   }}
                                 >
                                   <Check
                                     className={cn(
                                       'mr-2 h-4 w-4',
-                                      language.id === field.value
+                                      language.name === field.value
                                         ? 'opacity-100'
                                         : 'opacity-0',
                                     )}
